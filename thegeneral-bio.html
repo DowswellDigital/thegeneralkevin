@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin "The General" Neal — Pedal Steel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1A1612;
+    --gold: #C9A84C;
+    --rust: #8B3A2A;
+    --mid: #4A3F35;
+    --light-mid: #7A6E62;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--dark);
+    color: var(--cream);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .rank-badge {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 14px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.9;
+    color: var(--cream);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--gold);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 6px;
+    margin-top: 8px;
+  }
+
+  .hero-instrument {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    margin-top: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-instrument::before {
+    content: '— ';
+    color: var(--rust);
+  }
+
+  .hero-right {
+    position: relative;
+    background: linear-gradient(135deg, #2A1F18 0%, #0D0A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: 'THE\AGENERAL';
+    white-space: pre;
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    line-height: 0.85;
+    color: rgba(201, 168, 76, 0.04);
+    letter-spacing: -4px;
+    text-align: center;
+    animation: slowDrift 20s ease-in-out infinite alternate;
+  }
+
+  .stats-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .stat-cell {
+    background: rgba(26, 22, 18, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid rgba(201, 168, 76, 0.08);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .stat-cell:hover {
+    background: rgba(201, 168, 76, 0.06);
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .stat-cell:nth-child(1) { animation-delay: 0.5s; }
+  .stat-cell:nth-child(2) { animation-delay: 0.7s; }
+  .stat-cell:nth-child(3) { animation-delay: 0.9s; }
+  .stat-cell:nth-child(4) { animation-delay: 1.1s; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* Divider */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 60px;
+    margin: 0;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .divider-symbol {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+  }
+
+  /* Bio section */
+  .bio-section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--rust);
+    margin-bottom: 48px;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .bio-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .bio-text p + p {
+    margin-top: 28px;
+  }
+
+  .bio-text .lede {
+    font-size: 26px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+    margin-bottom: 40px;
+  }
+
+  .bio-text strong {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* Credentials sidebar */
+  .credentials {
+    position: sticky;
+    top: 40px;
+  }
+
+  .credential-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .credential-item:nth-child(1) { animation-delay: 0.2s; }
+  .credential-item:nth-child(2) { animation-delay: 0.35s; }
+  .credential-item:nth-child(3) { animation-delay: 0.5s; }
+  .credential-item:nth-child(4) { animation-delay: 0.65s; }
+  .credential-item:nth-child(5) { animation-delay: 0.8s; }
+  .credential-item:nth-child(6) { animation-delay: 0.95s; }
+
+  .credential-year {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+
+  .credential-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .credential-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+    margin-top: 4px;
+  }
+
+  /* Instruments section */
+  .instruments-section {
+    background: linear-gradient(180deg, var(--dark) 0%, #0D0A08 100%);
+    padding: 80px 60px;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .instruments-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .instruments-list {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .instrument-item {
+    flex: 1;
+    padding: 40px 32px;
+    border-right: 1px solid rgba(201, 168, 76, 0.15);
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .instrument-item:last-child { border-right: none; }
+
+  .instrument-item:hover {
+    background: rgba(201, 168, 76, 0.04);
+  }
+
+  .instrument-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .instrument-note {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+    font-style: italic;
+  }
+
+  /* Quote */
+  .quote-section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--cream);
+    position: relative;
+    padding: 0 60px;
+  }
+
+  .pull-quote::before,
+  .pull-quote::after {
+    content: '"';
+    font-size: 120px;
+    color: rgba(201, 168, 76, 0.15);
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    line-height: 1;
+  }
+
+  .pull-quote::before { top: -20px; left: 0; }
+  .pull-quote::after { bottom: -60px; right: 0; content: '"'; }
+
+  .quote-attr {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-top: 48px;
+  }
+
+  /* Contact / CTA */
+  .contact-section {
+    background: #0D0A08;
+    padding: 100px 60px;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--cream);
+  }
+
+  .contact-heading span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-line {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .contact-line:last-child { border-bottom: none; }
+
+  .contact-type {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .contact-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--cream);
+  }
+
+  .contact-value a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--gold); }
+
+  /* Footer */
+  footer {
+    background: var(--dark);
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201, 168, 76, 0.08);
+  }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--light-mid);
+  }
+
+  .footer-handle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slowDrift {
+    from { transform: translateY(-20px) rotate(-2deg); }
+    to { transform: translateY(20px) rotate(2deg); }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 32px; }
+    .hero-right { min-height: 60vw; }
+    .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+    .credentials { position: static; }
+    .instruments-list { flex-direction: column; }
+    .instrument-item { border-right: none; border-bottom: 1px solid rgba(201, 168, 76, 0.15); }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .bio-section, .quote-section, .contact-section, .instruments-section { padding: 60px 32px; }
+    footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="rank-badge">Pedal Steel · Dobro · Banjo · Guitar</div>
+    <h1 class="hero-name">
+      Kevin Neal
+      <span>The General</span>
+    </h1>
+    <p class="hero-instrument">Hamilton, Ontario · Available Worldwide</p>
+  </div>
+
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-number">2×</div>
+        <div class="stat-label">CCMA Nominated<br>Pedal Steel Player</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Continents.<br>Countless Stages.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">Grand<br><span style="font-size:24px">Ole Opry</span></div>
+        <div class="stat-label">Performance Credit</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">Sessions</div>
+        <div class="stat-label">Recorded With Artists<br>Around the World</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio-section">
+  <div class="section-label">// Biography</div>
+  <div class="bio-grid">
+    <div class="bio-text">
+      <p class="lede">Some pedal steel players fill a role. Kevin "The General" Neal defines the sound of a record.</p>
+      <p>A university-trained musician with an instinct for the spaces between notes, The General has built one of the most respected reputations in Canadian country music — not through self-promotion, but through the undeniable authority of his playing. His stage name wasn't chosen. It was earned.</p>
+      <p>Kevin has shared stages with <strong>Darius Rucker</strong>, <strong>Midland</strong>, and some of the biggest names in North American country, performing at landmark venues and festivals including the <strong>Calgary Stampede</strong>, <strong>Mariposa Folk Festival</strong>, and major festival stages in <strong>Norway</strong> — as well as the <strong>Grand Ole Opry</strong> in Nashville. His touring footprint spans Canada, the United States, and Europe.</p>
+      <p>In the studio, Kevin is equally at home. He has recorded with artists across multiple genres and continents — including appearing on <strong>Jade Eagleson's</strong> recording of <em>Steal My Girl</em>, bringing his signature tone to one of the most recognizable pop melodies of the last decade. His session work reflects the same quality that has made him a trusted first call for artists at every level.</p>
+      <p>Twice nominated for <strong>CCMA Pedal Steel Player of the Year</strong>, Kevin's credentials come from the people who know the instrument best — fellow musicians and industry peers who recognize the rare combination of technical mastery and musical intelligence he brings to every room.</p>
+      <p>His approach is systematic, tactical, and unfailingly musical. He reads a room, serves the song, and elevates the artist. That's why they call him The General.</p>
+    </div>
+
+    <div class="credentials">
+      <div class="credential-item">
+        <div class="credential-year">Live</div>
+        <div class="credential-title">Grand Ole Opry</div>
+        <div class="credential-sub">Nashville, Tennessee</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Festivals</div>
+        <div class="credential-title">Calgary Stampede · Mariposa</div>
+        <div class="credential-sub">+ Major stages in Norway & beyond</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Shared Stage</div>
+        <div class="credential-title">Darius Rucker · Midland</div>
+        <div class="credential-sub">+ Countless artists large and small</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Studio</div>
+        <div class="credential-title">Session Work — Canada, US & Worldwide</div>
+        <div class="credential-sub">Incl. Jade Eagleson — "Steal My Girl"</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Multiple</div>
+        <div class="credential-title">CCMA Pedal Steel Player of the Year</div>
+        <div class="credential-sub">2× Nominated</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Education</div>
+        <div class="credential-title">University Trained Musician</div>
+        <div class="credential-sub">Multi-Instrument</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-symbol">★</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- INSTRUMENTS -->
+<section class="instruments-section">
+  <div class="instruments-inner">
+    <div class="section-label">// Instruments</div>
+    <div class="instruments-list">
+      <div class="instrument-item">
+        <span class="instrument-name">Pedal Steel</span>
+        <span class="instrument-note">Primary · 2× CCMA nominated</span>
+      </div>
+      <div class="instrument-item">
+        <span class="instrument-name">Dobro</span>
+        <span class="instrument-note">Resonator · Slide</span>
+      </div>
+      <div class="instrument-item">
+        <span class="instrument-name">Banjo</span>
+        <span class="instrument-note">Bluegrass · Country</span>
+      </div>
+      <div class="instrument-item">
+        <span class="instrument-name">Guitar</span>
+        <span class="instrument-note">Acoustic · Electric</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote-section">
+  <blockquote class="pull-quote">
+    Something really special was starting to happen. And I think its edge is that we sound just a bit different from the acts coming out of Nashville and Texas.
+  </blockquote>
+  <p class="quote-attr">— Kevin Neal, on the sound he builds</p>
+</section>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-symbol">★</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-heading">
+      Book<br><span>The General.</span>
+    </div>
+    <div class="contact-details">
+      <div class="contact-line">
+        <span class="contact-type">Bookings & Inquiries</span>
+        <span class="contact-value"><a href="/cdn-cgi/l/email-protection#187a77777371767f58737d6e71766c707d7f7d767d6a7974367b7775"><span class="__cf_email__" data-cfemail="22404d4d494b4c45624947544b4c564a4745474c4750434e0c414d4f">[email&#160;protected]</span></a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Instagram</span>
+        <span class="contact-value"><a href="https://instagram.com/thegeneralkev" target="_blank">@thegeneralkev</a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Web</span>
+        <span class="contact-value"><a href="http://kevinthegeneral.com">kevinthegeneral.com</a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Based In</span>
+        <span class="contact-value">Hamilton, Ontario · Available Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div cl

@@ -1,0 +1,82 @@
+---
+const instruments = [
+  { name: 'Pedal Steel', note: 'Primary · 2× CCMA nominated' },
+  { name: 'Dobro', note: 'Resonator · Slide' },
+  { name: 'Banjo', note: 'Bluegrass · Country' },
+  { name: 'Guitar', note: 'Acoustic · Electric' },
+];
+---
+
+<section class="instruments-section">
+  <div class="instruments-inner">
+    <div class="section-label">// Instruments</div>
+    <div class="instruments-list">
+      {instruments.map((inst) => (
+        <div class="instrument-item">
+          <span class="instrument-name">{inst.name}</span>
+          <span class="instrument-note">{inst.note}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .instruments-section {
+    background: linear-gradient(180deg, var(--dark) 0%, #0D0A08 100%);
+    padding: 80px 60px;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .instruments-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .instruments-list {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .instrument-item {
+    flex: 1;
+    padding: 40px 32px;
+    border-right: 1px solid rgba(201, 168, 76, 0.15);
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .instrument-item:last-child { border-right: none; }
+
+  .instrument-item:hover {
+    background: rgba(201, 168, 76, 0.04);
+  }
+
+  .instrument-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .instrument-note {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .instruments-section { padding: 60px 32px; }
+    .instruments-list { flex-direction: column; }
+    .instrument-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+  }
+</style>

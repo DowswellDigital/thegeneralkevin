@@ -1,0 +1,138 @@
+---
+---
+
+<section class="bio-section">
+  <div class="section-label">// Biography</div>
+  <div class="bio-grid">
+    <div class="bio-text">
+      <p class="lede">Some pedal steel players fill a role. Kevin "The General" Neal defines the sound of a record.</p>
+      <p>A university-trained musician with an instinct for the spaces between notes, The General has built one of the most respected reputations in Canadian country music &mdash; not through self-promotion, but through the undeniable authority of his playing. His stage name wasn't chosen. It was earned.</p>
+      <p>Kevin has shared stages with <strong>Darius Rucker</strong>, <strong>Midland</strong>, and some of the biggest names in North American country, performing at landmark venues and festivals including the <strong>Calgary Stampede</strong>, <strong>Mariposa Folk Festival</strong>, and major festival stages in <strong>Norway</strong> &mdash; as well as the <strong>Grand Ole Opry</strong> in Nashville. His touring footprint spans Canada, the United States, and Europe.</p>
+      <p>In the studio, Kevin is equally at home. He has recorded with artists across multiple genres and continents &mdash; including appearing on <strong>Jade Eagleson's</strong> recording of <em>Steal My Girl</em>, bringing his signature tone to one of the most recognizable pop melodies of the last decade. His session work reflects the same quality that has made him a trusted first call for artists at every level.</p>
+      <p>Twice nominated for <strong>CCMA Pedal Steel Player of the Year</strong>, Kevin's credentials come from the people who know the instrument best &mdash; fellow musicians and industry peers who recognize the rare combination of technical mastery and musical intelligence he brings to every room.</p>
+      <p>His approach is systematic, tactical, and unfailingly musical. He reads a room, serves the song, and elevates the artist. That's why they call him The General.</p>
+    </div>
+
+    <div class="credentials">
+      <div class="credential-item">
+        <div class="credential-year">Live</div>
+        <div class="credential-title">Grand Ole Opry</div>
+        <div class="credential-sub">Nashville, Tennessee</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Festivals</div>
+        <div class="credential-title">Calgary Stampede · Mariposa</div>
+        <div class="credential-sub">+ Major stages in Norway & beyond</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Shared Stage</div>
+        <div class="credential-title">Darius Rucker · Midland</div>
+        <div class="credential-sub">+ Countless artists large and small</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Studio</div>
+        <div class="credential-title">Session Work — Canada, US & Worldwide</div>
+        <div class="credential-sub">Incl. Jade Eagleson — "Steal My Girl"</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Multiple</div>
+        <div class="credential-title">CCMA Pedal Steel Player of the Year</div>
+        <div class="credential-sub">2&times; Nominated</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-year">Education</div>
+        <div class="credential-title">University Trained Musician</div>
+        <div class="credential-sub">Multi-Instrument</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bio-section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .bio-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .bio-text p + p {
+    margin-top: 28px;
+  }
+
+  .bio-text .lede {
+    font-size: 26px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+    margin-bottom: 40px;
+  }
+
+  .bio-text :global(strong) {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .credentials {
+    position: sticky;
+    top: 40px;
+  }
+
+  .credential-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .credential-item:nth-child(1) { animation-delay: 0.2s; }
+  .credential-item:nth-child(2) { animation-delay: 0.35s; }
+  .credential-item:nth-child(3) { animation-delay: 0.5s; }
+  .credential-item:nth-child(4) { animation-delay: 0.65s; }
+  .credential-item:nth-child(5) { animation-delay: 0.8s; }
+  .credential-item:nth-child(6) { animation-delay: 0.95s; }
+
+  .credential-year {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+
+  .credential-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .credential-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .bio-section { padding: 60px 32px; }
+    .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+    .credentials { position: static; }
+  }
+</style>

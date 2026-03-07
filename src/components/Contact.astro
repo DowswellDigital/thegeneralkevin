@@ -1,0 +1,102 @@
+---
+---
+
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-heading">
+      Book<br><span>The General.</span>
+    </div>
+    <div class="contact-details">
+      <div class="contact-line">
+        <span class="contact-type">Bookings & Inquiries</span>
+        <span class="contact-value"><a href="mailto:thegeneralkevin@gmail.com">thegeneralkevin@gmail.com</a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Instagram</span>
+        <span class="contact-value"><a href="https://instagram.com/thegeneralkev" target="_blank" rel="noopener noreferrer">@thegeneralkev</a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Web</span>
+        <span class="contact-value"><a href="https://thegeneralkevin.com">thegeneralkevin.com</a></span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-type">Based In</span>
+        <span class="contact-value">Hamilton, Ontario · Available Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: #0D0A08;
+    padding: 100px 60px;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--cream);
+  }
+
+  .contact-heading span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-line {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .contact-line:last-child { border-bottom: none; }
+
+  .contact-type {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .contact-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--cream);
+  }
+
+  .contact-value a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .contact-section { padding: 60px 32px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>

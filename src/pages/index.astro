@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Bio from '../components/Bio.astro';
+import Instruments from '../components/Instruments.astro';
+import Quote from '../components/Quote.astro';
+import Contact from '../components/Contact.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+---
+
+<BaseLayout title="Kevin 'The General' Neal — Pedal Steel">
+  <Nav />
+  <Hero />
+  <Bio />
+  <SectionDivider />
+  <Instruments />
+  <Quote
+    text="Something really special was starting to happen. And I think its edge is that we sound just a bit different from the acts coming out of Nashville and Texas."
+    attribution="Kevin Neal, on the sound he builds"
+  />
+  <SectionDivider />
+  <Contact />
+</BaseLayout>

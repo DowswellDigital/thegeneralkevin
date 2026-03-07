@@ -1,0 +1,78 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/music/', label: 'Music' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">The General</a>
+  <div class="nav-links">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class:list={['nav-link', { active: currentPath === link.href }]}
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(26, 22, 18, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-logo:hover { opacity: 0.8; }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--gold);
+  }
+
+  @media (max-width: 900px) {
+    .site-nav { padding: 16px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-link { font-size: 10px; letter-spacing: 2px; }
+  }
+</style>

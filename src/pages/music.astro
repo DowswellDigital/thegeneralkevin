@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+
+const highlights = [
+  {
+    type: 'Studio',
+    title: 'Jade Eagleson — "Steal My Girl"',
+    description: 'Pedal steel on this standout recording, bringing signature tone to one of the most recognizable pop melodies of the last decade.',
+  },
+  {
+    type: 'Live',
+    title: 'Grand Ole Opry',
+    description: 'Performance credit at the most iconic venue in country music. Nashville, Tennessee.',
+  },
+  {
+    type: 'Festival',
+    title: 'Calgary Stampede',
+    description: 'One of the world\'s largest outdoor shows and a cornerstone of Canadian country music.',
+  },
+  {
+    type: 'Festival',
+    title: 'Mariposa Folk Festival',
+    description: 'Canada\'s longest-running folk festival, showcasing roots music since 1961.',
+  },
+  {
+    type: 'International',
+    title: 'Norway Festival Stages',
+    description: 'Major festival performances bringing Canadian country and steel guitar to European audiences.',
+  },
+  {
+    type: 'Touring',
+    title: 'Darius Rucker · Midland',
+    description: 'Shared stages with some of the biggest names in North American country music.',
+  },
+];
+
+const instruments = [
+  {
+    name: 'Pedal Steel Guitar',
+    role: 'Primary Instrument',
+    details: 'The instrument that earned Kevin his reputation and two CCMA nominations. His pedal steel work defines records — lyrical, precise, and always in service of the song.',
+  },
+  {
+    name: 'Dobro / Resonator',
+    role: 'Slide Specialist',
+    details: 'Warm, resonant slide work that bridges the gap between bluegrass tradition and modern country production.',
+  },
+  {
+    name: 'Banjo',
+    role: 'Bluegrass & Country',
+    details: 'From driving bluegrass rolls to tasteful country picking, Kevin\'s banjo work adds authentic texture to any project.',
+  },
+  {
+    name: 'Guitar',
+    role: 'Acoustic & Electric',
+    details: 'A versatile guitarist equally comfortable with fingerpicked acoustic parts and electric rhythm and lead work.',
+  },
+];
+---
+
+<BaseLayout title="Music — Kevin 'The General' Neal" description="Live performances, studio sessions, and career highlights from 2× CCMA-nominated pedal steel player Kevin 'The General' Neal.">
+  <Nav />
+
+  <section class="page-hero">
+    <div class="section-label">// Music & Credits</div>
+    <h1 class="page-title">Where The General<br><span>Has Been</span></h1>
+    <p class="page-sub">Live. Studio. Worldwide.</p>
+  </section>
+
+  <section class="highlights-section">
+    <div class="section-label">// Selected Highlights</div>
+    <div class="highlights-grid">
+      {highlights.map((item) => (
+        <div class="highlight-card">
+          <span class="highlight-type">{item.type}</span>
+          <h3 class="highlight-title">{item.title}</h3>
+          <p class="highlight-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <SectionDivider />
+
+  <section class="instruments-detail">
+    <div class="section-label">// Instruments & Specialties</div>
+    <div class="instrument-cards">
+      {instruments.map((inst) => (
+        <div class="instrument-card">
+          <div class="instrument-card-header">
+            <h3 class="instrument-card-name">{inst.name}</h3>
+            <span class="instrument-card-role">{inst.role}</span>
+          </div>
+          <p class="instrument-card-details">{inst.details}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <SectionDivider />
+
+  <section class="session-cta">
+    <h2>Need pedal steel, dobro, banjo, or guitar on your next project?</h2>
+    <p>Kevin is available for sessions — remote or in-person — anywhere in the world.</p>
+    <a href="/contact/" class="cta-link">Get In Touch</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 160px 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--cream);
+    margin-top: 16px;
+  }
+
+  .page-title span { color: var(--gold); }
+
+  .page-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    margin-top: 24px;
+  }
+
+  .page-sub::before {
+    content: '— ';
+    color: var(--rust);
+  }
+
+  /* Highlights */
+  .highlights-section {
+    padding: 60px 60px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    margin-top: 48px;
+  }
+
+  .highlight-card {
+    padding: 40px 32px;
+    background: rgba(26, 22, 18, 0.6);
+    border: 1px solid rgba(201, 168, 76, 0.08);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .highlight-card:hover {
+    background: rgba(201, 168, 76, 0.04);
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .highlight-type {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--cream);
+    margin-top: 12px;
+    line-height: 1.3;
+  }
+
+  .highlight-desc {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--light-mid);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* Instrument cards */
+  .instruments-detail {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .instrument-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .instrument-card {
+    padding: 40px 32px;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    transition: background 0.3s ease;
+  }
+
+  .instrument-card:hover {
+    background: rgba(201, 168, 76, 0.03);
+  }
+
+  .instrument-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+
+  .instrument-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  .instrument-card-role {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .instrument-card-details {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--light-mid);
+    line-height: 1.6;
+  }
+
+  /* Session CTA */
+  .session-cta {
+    padding: 100px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .session-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .session-cta p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    color: var(--light-mid);
+    margin-top: 16px;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 12px 32px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .cta-link:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  @media (max-width: 900px) {
+    .page-hero { padding: 120px 32px 40px; }
+    .highlights-section { padding: 40px 32px 60px; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .instruments-detail { padding: 60px 32px; }
+    .instrument-cards { grid-template-columns: 1fr; }
+    .session-cta { padding: 60px 32px; }
+  }
+</style>

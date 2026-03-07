@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Kevin 'The General' Neal — Pedal Steel, Dobro, Banjo & Guitar. 2× CCMA nominated. Hamilton, Ontario. Available worldwide." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={`https://thegeneralkevin.com${Astro.url.pathname}`}>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={`https://thegeneralkevin.com${Astro.url.pathname}`}>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+  <slot />
+  <footer>
+    <div class="footer-name">Kevin "The General" Neal</div>
+    <div class="footer-handle">thegeneralkevin.com</div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<style>
+  footer {
+    background: var(--dark);
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201, 168, 76, 0.08);
+  }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--light-mid);
+  }
+
+  .footer-handle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--light-mid);
+  }
+
+  @media (max-width: 900px) {
+    footer {
+      padding: 24px 32px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>

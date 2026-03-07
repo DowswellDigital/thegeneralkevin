@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout title="Contact — Kevin 'The General' Neal" description="Book Kevin 'The General' Neal for live performances, studio sessions, and touring. Based in Hamilton, Ontario. Available worldwide.">
+  <Nav />
+
+  <section class="page-hero">
+    <div class="section-label">// Contact</div>
+    <h1 class="page-title">Book<br><span>The General.</span></h1>
+    <p class="page-sub">Sessions · Touring · Live Performance</p>
+  </section>
+
+  <section class="contact-content">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-block">
+          <span class="contact-type">Bookings & Inquiries</span>
+          <span class="contact-value"><a href="mailto:thegeneralkevin@gmail.com">thegeneralkevin@gmail.com</a></span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-type">Instagram</span>
+          <span class="contact-value"><a href="https://instagram.com/thegeneralkev" target="_blank" rel="noopener noreferrer">@thegeneralkev</a></span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-type">Web</span>
+          <span class="contact-value"><a href="https://thegeneralkevin.com">thegeneralkevin.com</a></span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-type">Based In</span>
+          <span class="contact-value">Hamilton, Ontario</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-type">Availability</span>
+          <span class="contact-value">Worldwide</span>
+        </div>
+      </div>
+
+      <div class="contact-copy">
+        <h2>Available For</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <h3>Live Performance</h3>
+            <p>Festivals, concerts, private events, and touring. Pedal steel, dobro, banjo, and guitar.</p>
+          </div>
+          <div class="service-item">
+            <h3>Studio Sessions</h3>
+            <p>In-person or remote recording. Quick turnaround, professional quality, always musical.</p>
+          </div>
+          <div class="service-item">
+            <h3>Touring</h3>
+            <p>Extended tour support across North America, Europe, and beyond. Road-tested and reliable.</p>
+          </div>
+          <div class="service-item">
+            <h3>Collaboration</h3>
+            <p>Open to creative partnerships, writing sessions, and production consultation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 160px 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--cream);
+    margin-top: 16px;
+  }
+
+  .page-title span { color: var(--gold); }
+
+  .page-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    margin-top: 24px;
+  }
+
+  .page-sub::before {
+    content: '— ';
+    color: var(--rust);
+  }
+
+  .contact-content {
+    padding: 60px 60px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    transition: background 0.3s;
+  }
+
+  .contact-block:last-child { border-bottom: none; }
+
+  .contact-block:hover {
+    background: rgba(201, 168, 76, 0.03);
+  }
+
+  .contact-type {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .contact-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--cream);
+  }
+
+  .contact-value a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--gold); }
+
+  .contact-copy h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--rust);
+    margin-bottom: 32px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .service-item {
+    padding: 32px;
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .service-item:hover {
+    background: rgba(201, 168, 76, 0.03);
+    border-color: rgba(201, 168, 76, 0.25);
+  }
+
+  .service-item h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .service-item p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--light-mid);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero { padding: 120px 32px 40px; }
+    .contact-content { padding: 40px 32px 60px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
