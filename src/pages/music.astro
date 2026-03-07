@@ -5,6 +5,11 @@ import SectionDivider from '../components/SectionDivider.astro';
 
 const highlights = [
   {
+    type: 'Touring',
+    title: 'Jade Eagleson — Honky Tonk Tour',
+    description: 'Pedal steel on Eagleson\'s 2025–2026 headlining tour across Canada and the U.S., hitting stages from the Commodore Ballroom to the Opera House.',
+  },
+  {
     type: 'Studio',
     title: 'Jade Eagleson — "Steal My Girl"',
     description: 'Pedal steel on this standout recording, bringing signature tone to one of the most recognizable pop melodies of the last decade.',
@@ -16,18 +21,13 @@ const highlights = [
   },
   {
     type: 'Festival',
-    title: 'Calgary Stampede',
-    description: 'One of the world\'s largest outdoor shows and a cornerstone of Canadian country music.',
-  },
-  {
-    type: 'Festival',
-    title: 'Mariposa Folk Festival',
-    description: 'Canada\'s longest-running folk festival, showcasing roots music since 1961.',
+    title: 'Calgary Stampede · K-Days · Cavendish',
+    description: 'Regular appearances at Canada\'s biggest outdoor festivals and country music stages.',
   },
   {
     type: 'International',
-    title: 'Norway Festival Stages',
-    description: 'Major festival performances bringing Canadian country and steel guitar to European audiences.',
+    title: 'Norway · CMA Fest · CCMA Awards',
+    description: 'Festival stages spanning three continents — from Nashville to Kelowna to Scandinavia.',
   },
   {
     type: 'Touring',
@@ -38,7 +38,7 @@ const highlights = [
 
 const instruments = [
   {
-    name: 'Pedal Steel Guitar',
+    name: 'Pedal Steel',
     role: 'Primary Instrument',
     details: 'The instrument that earned Kevin his reputation and two CCMA nominations. His pedal steel work defines records — lyrical, precise, and always in service of the song.',
   },
@@ -46,16 +46,6 @@ const instruments = [
     name: 'Dobro / Resonator',
     role: 'Slide Specialist',
     details: 'Warm, resonant slide work that bridges the gap between bluegrass tradition and modern country production.',
-  },
-  {
-    name: 'Banjo',
-    role: 'Bluegrass & Country',
-    details: 'From driving bluegrass rolls to tasteful country picking, Kevin\'s banjo work adds authentic texture to any project.',
-  },
-  {
-    name: 'Guitar',
-    role: 'Acoustic & Electric',
-    details: 'A versatile guitarist equally comfortable with fingerpicked acoustic parts and electric rhythm and lead work.',
   },
 ];
 ---
@@ -68,6 +58,10 @@ const instruments = [
     <h1 class="page-title">Where The General<br><span>Has Been</span></h1>
     <p class="page-sub">Live. Studio. Worldwide.</p>
   </section>
+
+  <div class="music-hero-image">
+    <img src="/kevin5.png" alt="Kevin Neal on pedal steel, live on stage" />
+  </div>
 
   <section class="highlights-section">
     <div class="section-label">// Selected Highlights</div>
@@ -102,7 +96,7 @@ const instruments = [
   <SectionDivider />
 
   <section class="session-cta">
-    <h2>Need pedal steel, dobro, banjo, or guitar on your next project?</h2>
+    <h2>Need pedal steel or dobro on your next project?</h2>
     <p>Kevin is available for sessions — remote or in-person — anywhere in the world.</p>
     <a href="/contact/" class="cta-link">Get In Touch</a>
   </section>
@@ -139,6 +133,19 @@ const instruments = [
   .page-sub::before {
     content: '— ';
     color: var(--rust);
+  }
+
+  .music-hero-image {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .music-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(201, 168, 76, 0.15);
   }
 
   /* Highlights */

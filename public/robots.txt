@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thegeneralkevin.com/sitemap-index.xml

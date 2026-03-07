@@ -20,19 +20,22 @@ import Quote from '../components/Quote.astro';
 
         <p>A university-trained musician with an instinct for the spaces between notes, Kevin "The General" Neal has built one of the most respected reputations in Canadian country music &mdash; not through self-promotion, but through the undeniable authority of his playing.</p>
 
-        <p>Based in Hamilton, Ontario, Kevin's career spans decades of live performance, studio sessions, and collaborative work with artists at every level. His primary instrument is the pedal steel guitar, though he is equally accomplished on dobro, banjo, and guitar.</p>
+        <p>Based in Hamilton, Ontario, Kevin's career spans decades of live performance, studio sessions, and collaborative work with artists at every level. His primary instrument is the pedal steel guitar, though he is equally accomplished on dobro.</p>
 
         <h2>On Stage</h2>
-        <p>Kevin has shared stages with <strong>Darius Rucker</strong>, <strong>Midland</strong>, and some of the biggest names in North American country. His touring footprint spans three continents, with performances at landmark venues and festivals including the <strong>Grand Ole Opry</strong> in Nashville, the <strong>Calgary Stampede</strong>, <strong>Mariposa Folk Festival</strong>, and major festival stages in <strong>Norway</strong>.</p>
+        <p>Kevin has shared stages with some of the biggest names in North American country, performing at landmark venues and festivals including the <strong>Calgary Stampede</strong>, <strong>Mariposa Folk Festival</strong>, and other major festival stages around the world.</p>
 
-        <h2>In the Studio</h2>
-        <p>Kevin has recorded with artists across multiple genres and continents &mdash; including appearing on <strong>Jade Eagleson's</strong> recording of <em>Steal My Girl</em>, bringing his signature tone to one of the most recognizable pop melodies of the last decade. His session work reflects the same quality that has made him a trusted first call for artists at every level.</p>
+        <h2>In the Studio & On the Road</h2>
+        <p>Kevin has recorded with artists across multiple genres and continents. His longstanding work with <strong>Jade Eagleson</strong> &mdash; from the studio recording of <em>Steal My Girl</em> to Eagleson's 2025&ndash;2026 <strong>Coming Soon to a Honky Tonk Near You</strong> headlining tour across Canada and the U.S. &mdash; reflects the trust that top-tier artists place in his playing. His session and touring work spans CMA Fest, CCMA Awards stages, the Calgary Stampede, K-Days, Cavendish Beach, and beyond.</p>
 
         <h2>Recognition</h2>
         <p>Twice nominated for <strong>CCMA Pedal Steel Player of the Year</strong>, Kevin's credentials come from the people who know the instrument best &mdash; fellow musicians and industry peers who recognize the rare combination of technical mastery and musical intelligence he brings to every room.</p>
       </div>
 
       <aside class="about-sidebar">
+        <div class="sidebar-portrait">
+          <img src="/kevin4.png" alt="Kevin Neal" />
+        </div>
         <div class="sidebar-block">
           <h3>Quick Facts</h3>
           <ul>
@@ -50,8 +53,6 @@ import Quote from '../components/Quote.astro';
           <ul>
             <li>Pedal Steel (primary)</li>
             <li>Dobro / Resonator</li>
-            <li>Banjo</li>
-            <li>Guitar (Acoustic & Electric)</li>
           </ul>
         </div>
       </aside>
@@ -136,6 +137,18 @@ import Quote from '../components/Quote.astro';
   .about-sidebar {
     position: sticky;
     top: 100px;
+  }
+
+  .sidebar-portrait {
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .sidebar-portrait img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .sidebar-block {

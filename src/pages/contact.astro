@@ -6,10 +6,13 @@ import Nav from '../components/Nav.astro';
 <BaseLayout title="Contact — Kevin 'The General' Neal" description="Book Kevin 'The General' Neal for live performances, studio sessions, and touring. Based in Hamilton, Ontario. Available worldwide.">
   <Nav />
 
-  <section class="page-hero">
-    <div class="section-label">// Contact</div>
-    <h1 class="page-title">Book<br><span>The General.</span></h1>
-    <p class="page-sub">Sessions · Touring · Live Performance</p>
+  <section class="page-hero contact-hero">
+    <img src="/kevin3.png" alt="Kevin Neal performing on stage" class="contact-hero-bg" />
+    <div class="contact-hero-content">
+      <div class="section-label">// Contact</div>
+      <h1 class="page-title">Book<br><span>The General.</span></h1>
+      <p class="page-sub">Sessions · Touring · Live Performance</p>
+    </div>
   </section>
 
   <section class="contact-content">
@@ -17,7 +20,7 @@ import Nav from '../components/Nav.astro';
       <div class="contact-info">
         <div class="contact-block">
           <span class="contact-type">Bookings & Inquiries</span>
-          <span class="contact-value"><a href="mailto:thegeneralkevin@gmail.com">thegeneralkevin@gmail.com</a></span>
+          <span class="contact-value"><a href="mailto:howdy@thegeneralkevin.com">howdy@thegeneralkevin.com</a></span>
         </div>
         <div class="contact-block">
           <span class="contact-type">Instagram</span>
@@ -42,7 +45,7 @@ import Nav from '../components/Nav.astro';
         <div class="services-grid">
           <div class="service-item">
             <h3>Live Performance</h3>
-            <p>Festivals, concerts, private events, and touring. Pedal steel, dobro, banjo, and guitar.</p>
+            <p>Festivals, concerts, private events, and touring. Pedal steel and dobro.</p>
           </div>
           <div class="service-item">
             <h3>Studio Sessions</h3>
@@ -63,8 +66,28 @@ import Nav from '../components/Nav.astro';
 </BaseLayout>
 
 <style>
-  .page-hero {
-    padding: 160px 60px 60px;
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    max-width: none;
+    padding: 0;
+    min-height: 480px;
+  }
+
+  .contact-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.2;
+  }
+
+  .contact-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 160px 60px 80px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -194,6 +217,7 @@ import Nav from '../components/Nav.astro';
 
   @media (max-width: 900px) {
     .page-hero { padding: 120px 32px 40px; }
+    .contact-hero-content { padding: 120px 32px 40px; }
     .contact-content { padding: 40px 32px 60px; }
     .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .services-grid { grid-template-columns: 1fr; }

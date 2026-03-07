@@ -3,7 +3,7 @@
 
 <section class="hero">
   <div class="hero-left">
-    <div class="rank-badge">Pedal Steel · Dobro · Banjo · Guitar</div>
+    <div class="rank-badge">2× CCMA Nominated · Pedal Steel & Dobro</div>
     <h1 class="hero-name">
       Kevin Neal
       <span>The General</span>
@@ -12,6 +12,7 @@
   </div>
 
   <div class="hero-right">
+    <img src="/kevin1.png" alt="Kevin 'The General' Neal with his pedal steel guitar" class="hero-image" />
     <div class="stats-grid">
       <div class="stat-cell">
         <div class="stat-number">2&times;</div>
@@ -120,6 +121,17 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.3;
+    z-index: 1;
   }
 
   .hero-right::before {

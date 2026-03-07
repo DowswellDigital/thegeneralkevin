@@ -2,9 +2,37 @@
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Kevin 'The General' Neal — Pedal Steel, Dobro, Banjo & Guitar. 2× CCMA nominated. Hamilton, Ontario. Available worldwide." } = Astro.props;
+const defaultDescription = "Kevin 'The General' Neal — 2× CCMA-nominated pedal steel and dobro player. Session musician and touring artist based in Hamilton, Ontario. Available worldwide for live performance, studio sessions, and touring.";
+const { title, description = defaultDescription, ogImage = '/kevin1.png' } = Astro.props;
+const canonicalURL = `https://thegeneralkevin.com${Astro.url.pathname}`;
+const ogImageURL = `https://thegeneralkevin.com${ogImage}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  'name': 'Kevin "The General" Neal',
+  'url': 'https://thegeneralkevin.com',
+  'image': ogImageURL,
+  'description': defaultDescription,
+  'genre': ['Country', 'Roots', 'Folk'],
+  'member': {
+    '@type': 'Person',
+    'name': 'Kevin Neal',
+    'alternateName': 'The General',
+    'knowsAbout': ['Pedal Steel Guitar', 'Dobro'],
+    'jobTitle': 'Session Musician & Touring Artist',
+  },
+  'location': {
+    '@type': 'Place',
+    'name': 'Hamilton, Ontario, Canada',
+  },
+  'sameAs': [
+    'https://instagram.com/thegeneralkev',
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -14,13 +42,36 @@ const { title, description = "Kevin 'The General' Neal — Pedal Steel, Dobro, B
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="canonical" href={`https://thegeneralkevin.com${Astro.url.pathname}`}>
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
 
   <!-- Open Graph -->
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
-  <meta property="og:url" content={`https://thegeneralkevin.com${Astro.url.pathname}`}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:image" content={ogImageURL}>
+  <meta property="og:site_name" content="Kevin 'The General' Neal">
+  <meta property="og:locale" content="en_CA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImageURL}>
+
+  <!-- Additional SEO -->
+  <meta name="author" content="Kevin Neal">
+  <meta name="keywords" content="pedal steel, dobro, session musician, touring musician, Kevin Neal, The General, CCMA, country music, Hamilton Ontario, pedal steel player, Jade Eagleson, studio sessions">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="CA-ON">
+  <meta name="geo.placename" content="Hamilton, Ontario">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
